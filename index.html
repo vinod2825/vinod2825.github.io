@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Access Granted</title>
+  <style>
+    body {
+      background-color: #0a0a0a;
+      color: #00ffcc;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 1.2em;
+      padding: 20px;
+      overflow-x: hidden;
+    }
+    #console {
+      white-space: pre-wrap;
+      overflow: hidden;
+    }
+    .hidden {
+      display: none;
+    }
+    .reveal {
+      margin-top: 30px;
+      animation: fadeIn 2s forwards;
+    }
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+
+    .confetti {
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      top: -10px;
+      animation: fall linear infinite;
+      z-index: 9999;
+      opacity: 0.8;
+    }
+    @keyframes fall {
+      to {
+        transform: translateY(100vh) rotate(360deg);
+      }
+    }
+
+    .firework {
+      position: fixed;
+      width: 6px;
+      height: 6px;
+      background-color: yellow;
+      border-radius: 50%;
+      animation: explode 1s ease-out forwards;
+      pointer-events: none;
+    }
+    @keyframes explode {
+      0% { opacity: 1; transform: scale(1); }
+      100% { opacity: 0; transform: scale(5); }
+    }
+  </style>
+</head>
+<body>
+  <div id="console"></div>
+  <div id="message" class="hidden">
+    <h2>🎉 Access Granted 🎉</h2>
+    <p>Decryption Complete: <strong>HAPPY 🎂🎂 BIRTHDAY, Vishal Jangid!</strong></p>
+    <p>Wishing you a year full of strength, resilience, and happiness.<br>
+    From one digital warrior to another — stay secure, stay legendary!</p>
+    <p>🎂🎈 ab hoja start and build your great future — not emotions.</p>
+  </div>
+
+  <script>
+    const lines = [
+      'Initializing secure birthday protocol...\n',
+      'Authenticating recipient...',
+      'Verifying: Vishal Jangid',
+      'Bypassing firewalls...',
+      'Injecting celebration payload...',
+      'Encrypting personal wishes...',
+      'Establishing secure connection...',
+      'Access level: ULTRA BIRTHDAY',
+      'Finalizing surprise package...',
+      'Decrypting heart message...',
+      'Loading reveal...\n',
+    ];
+
+    let i = 0;
+    const consoleEl = document.getElementById('console');
+
+    function typeLine() {
+      if (i < lines.length) {
+        consoleEl.innerHTML += lines[i] + '\n';
+        i++;
+        setTimeout(typeLine, 900);
+      } else {
+        document.getElementById('message').classList.remove('hidden');
+        document.getElementById('message').classList.add('reveal');
+        launchConfetti();
+        launchFireworks();
+      }
+    }
+
+    function launchConfetti() {
+      for (let i = 0; i < 150; i++) {
+        let confetti = document.createElement('div');
+        confetti.classList.add('confetti');
+        confetti.style.left = Math.random() * 100 + 'vw';
+        confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
+        confetti.style.backgroundColor = ['#00ffcc', '#ff00ff', '#00ffff', '#ffff00', '#ff6600'][Math.floor(Math.random() * 5)];
+        document.body.appendChild(confetti);
+        setTimeout(() => confetti.remove(), 5000);
+      }
+    }
+
+    function launchFireworks() {
+      for (let i = 0; i < 30; i++) {
+        let fw = document.createElement('div');
+        fw.classList.add('firework');
+        fw.style.left = Math.random() * window.innerWidth + 'px';
+        fw.style.top = Math.random() * window.innerHeight / 2 + 'px';
+        fw.style.backgroundColor = ['red', 'orange', 'cyan', 'white', 'magenta'][Math.floor(Math.random() * 5)];
+        document.body.appendChild(fw);
+        setTimeout(() => fw.remove(), 1000);
+      }
+    }
+
+    typeLine();
+  </script>
+</body>
+</html>
